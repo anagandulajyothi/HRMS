@@ -1,4 +1,5 @@
-from homepage import Homepage
+
+from pageobjects.homepage import Homepage
 
 from time import sleep
 
