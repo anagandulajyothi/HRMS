@@ -1,12 +1,13 @@
 
+from pageobjects.Raiseticket_element import raiseticket
 
 from pageobjects.homepage import Homepage
-
 from time import sleep
+#from Login import login
 
 from playwright.sync_api import Playwright, sync_playwright, expect
 
-with sync_playwright () as p: 
+with sync_playwright () as p:
  browser = p.chromium.launch(headless=False)
  page = browser.new_page()
  page.goto('https://hrmsdev1.azurewebsites.net/')
@@ -18,7 +19,12 @@ with sync_playwright () as p:
  home_page.password.fill("Password1!")
  sleep(15)
  home_page.login.click()
- sleep(20)
+ sleep(10)
  page.locator('input:has-text("No")').click()
  sleep(10)
- browser.close()
+ menu = raiseticket(page)
+ menu.module.click()
+ menu.modulename.click()
+ 
+
+
